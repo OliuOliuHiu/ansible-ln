@@ -1,0 +1,18 @@
+#SPDX-License-Identifier: MIT-0
+---
+# defaults file for roles/loadbalancing
+# List of backend servers
+backend_servers:
+  - name: server1
+    address: 3.26.216.89
+    port: 8081
+  - name: server2
+    address: 3.26.216.89
+    port: 8082
+  - name: server3
+    address: 3.26.216.89
+    port: 8083
+
+load_balancing_method: round-robin
+
+load_balancer_port: 80

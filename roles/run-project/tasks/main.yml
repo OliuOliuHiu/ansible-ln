@@ -1,0 +1,23 @@
+#SPDX-License-Identifier: MIT-0
+---
+# tasks file for roles/run-project
+- name: Pull Docker images
+  docker_image:
+    name: "{{ item }}"
+    source: pull
+  loop:
+    - elroydevops/accountingservice-1
+    - elroydevops/accountingservice-2
+    - elroydevops/accountingservice-3
+
+- name: Run containers
+  docker_container:
+    name: "{{ item.name }}"
+    image: "{{ item.image }}"
+    state: started
+    ports:
+      - "{{ item.ports }}"
+  loop:
+    - { name: "container-1", image: "elroydevops/accountingservice-1", ports: "8081:80" }
+    - { name: "container-2", image: "elroydevops/accountingservice-2", ports: "8082:80" }
+    - { name: "container-3", image: "elroydevops/accountingservice-3", ports: "8083:80" }
