@@ -1,6 +1,7 @@
 #SPDX-License-Identifier: MIT-0
 ---
 # defaults file for roles/loadbalancing
+nginx_conf_path: /etc/nginx/conf.d/loadbalancing.conf
 # List of backend servers
 backend_servers:
   - name: server1
